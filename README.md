@@ -66,3 +66,46 @@ If you use this code or ideas from our paper, please cite our paper:
 
 ## Acknowledgments
 This code borrows from [StyleGAN2 by rosalinity](https://github.com/rosinality/stylegan2-pytorch)
+
+
+
+---
+# 자주 쓰는 명령어
+	cd D:\Work\220119_GAN\Controllable Toonification using Pretrained StyleGAN2\source
+	..\venv\Scripts\activate.ps1
+	python -m notebook    
+
+
+
+# 서버 준비
+
+    # 파이썬 가상화 설치
+      python -m venv venv           
+    # 파이썬 가상화 접속
+      ..\venv\Scripts\activate.ps1  
+    # 주피터 노트북 설치
+      pip install jupyter
+
+    # cuda 버전확인
+      nvcc --version
+    # 파이토치 설치
+      참고) https://pytorch.kr/get-started/locally/
+      pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+      pip install kornia
+      pip install matplotlib
+      pip install opencv-python
+      pip install scipy
+      pip install tqdm
+      pip install lpips
+      pip install kornia
+
+    # 주피터 노트북 실행
+      python -m notebook    
+    # 주피터 노트북 내에서 해당 파일 클릭(실행)
+      toonify.ipynb
+
+
+# 사람 이미지로 데이터 준비
+    project.ipynb 으로 학습시킴
+
+

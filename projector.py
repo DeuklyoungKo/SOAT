@@ -133,7 +133,8 @@ if __name__ == '__main__':
     # get gaussian stats
     if not os.path.isfile('inversion_stats.npz'):
         with torch.no_grad():
-            source = list2style(g_ema.get_latent(torch.randn([10000, 512]).cuda())).cpu().numpy()
+            # source = list2style(g_ema.get_latent(torch.randn([10000, 512]).cuda())).cpu().numpy()
+            source = list2style(g_ema.get_latent(torch.randn([10000, 512]))).cpu().numpy()
             gt_mean = source.mean(0)
             gt_cov = np.cov(source, rowvar=False)
 
@@ -142,11 +143,14 @@ if __name__ == '__main__':
         np.savez('inversion_stats.npz', mean=gt_mean, cov=gt_cov)
 
     data = np.load('inversion_stats.npz')
-    gt_mean = torch.tensor(data['mean']).cuda().view(1,-1).float()
-    gt_cov_inv = torch.tensor(data['cov']).cuda()
+    # gt_mean = torch.tensor(data['mean']).cuda().view(1,-1).float()
+    gt_mean = torch.tensor(data['mean']).view(1,-1).float()
+    # gt_cov_inv = torch.tensor(data['cov']).cuda()
+    gt_cov_inv = torch.tensor(data['cov'])
     
     # Only take diagonals
-    mask = torch.eye(*gt_cov_inv.size()).cuda()
+    # mask = torch.eye(*gt_cov_inv.size()).cuda()
+    mask = torch.eye(*gt_cov_inv.size())
     gt_cov_inv = torch.inverse(gt_cov_inv*mask).float()
 
 
