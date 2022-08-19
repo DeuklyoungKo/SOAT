@@ -1,3 +1,13 @@
+# Source code:
+https://github.com/kairess/SOAT
+Original : https://github.com/mchong6/SOAT
+
+Dependency:
+- Python 3
+- PyTorch
+- OpenCV
+
+
 # Controllable Toonification using Pretrained StyleGAN2
 
 ![](imgs/result1.png)
